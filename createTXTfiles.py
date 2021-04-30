@@ -35,8 +35,7 @@ def read_xlsx(base_path, input_file, target_file):
 
     # load the template scene data
 
-    with open(base_path+'\\json_templates\\script_template_scenes.json') as json_file:
-
+    with open(base_path+'\\json_templates\\script_template_scenes.json', encoding='utf8') as json_file:
         data = json.load(json_file)
         head, tail = os.path.split(target_file)
         data['name'] = tail.replace('.json', '')
@@ -59,7 +58,7 @@ def read_xlsx(base_path, input_file, target_file):
             data['sources'].append(text_data)
     with open(target_file, 'w') as f:
         # write final scene collection to given file
-        json.dump(data, f, indent=4, ensure_ascii=False).encode('utf8')
+        json.dump(data, f, indent=4)
 
 
 def create_scene_data(base_path, ws, idx):
