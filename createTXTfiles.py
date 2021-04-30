@@ -24,7 +24,7 @@ def read_xlsx(base_path, input_file, target_file):
 
         data = json.load(json_file)
         head, tail = os.path.split(target_file)
-        data['name'] = tail
+        data['name'] = tail.replace('.json', '')
     #
     for idx, row in enumerate(ws.iter_rows()):
 
@@ -79,12 +79,16 @@ def create_text_data(base_path, ws, idx):
 
 if __name__ == "__main__":
     #
+    print('Welcome to the automated scene creation by BJEW')
+    #
     if sys.argv and len(sys.argv) > 2:
         #
         input_file = sys.argv[1]
         target_file = sys.argv[2]
         #
         read_xlsx(os.path.dirname(sys.argv[0]), input_file, target_file)
+        #
+        print('Success!')
     else:
         #
         print('Missing parameters!')
