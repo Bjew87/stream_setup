@@ -1,3 +1,18 @@
+#!utf8
+"""
+
+        ########        ## ######## ##      ## 
+        ##     ##       ## ##       ##  ##  ## 
+        ##     ##       ## ##       ##  ##  ## 
+        ########        ## ######   ##  ##  ## 
+        ##     ## ##    ## ##       ##  ##  ## 
+        ##     ## ##    ## ##       ##  ##  ## 
+        ########   ######  ########  ###  ###  
+
+Script reads 
+
+"""
+
 import openpyxl
 import os
 
@@ -42,12 +57,9 @@ def read_xlsx(base_path, input_file, target_file):
 
             data['sources'].append(scene_data)
             data['sources'].append(text_data)
-
-    # write final data to target file
-
     with open(target_file, 'w') as f:
-
-        json.dump(data, f, indent=4)
+        # write final scene collection to given file
+        json.dump(data, f, indent=4, ensure_ascii=False).encode('utf8')
 
 
 def create_scene_data(base_path, ws, idx):
