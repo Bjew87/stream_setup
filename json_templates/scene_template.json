@@ -1,0 +1,154 @@
+{
+	"balance": 0.5,
+	"deinterlace_field_order": 0,
+	"deinterlace_mode": 0,
+	"enabled": true,
+	"flags": 0,
+	"hotkeys": {
+		"OBSBasic.SelectScene": [],
+		"libobs.hide_scene_item.ATEM Mini Pro": [],
+		"libobs.hide_scene_item.RodeCaster": [],
+		"libobs.hide_scene_item.script_template_clr_bg": [],
+		"libobs.hide_scene_item.script_template_text": [],
+		"libobs.show_scene_item.ATEM Mini Pro": [],
+		"libobs.show_scene_item.RodeCaster": [],
+		"libobs.show_scene_item.script_template_clr_bg": [],
+		"libobs.show_scene_item.script_template_text": []
+	},
+	"id": "scene",
+	"mixers": 0,
+	"monitoring_type": 0,
+	"muted": false,
+	"name": "script_scene_template",
+	"prev_ver": 436273153,
+	"private_settings": {},
+	"push-to-mute": false,
+	"push-to-mute-delay": 0,
+	"push-to-talk": false,
+	"push-to-talk-delay": 0,
+	"settings": {
+		"custom_size": false,
+		"id_counter": 4,
+		"items": [
+			{
+				"align": 5,
+				"bounds": {
+					"x": 0.0,
+					"y": 0.0
+				},
+				"bounds_align": 0,
+				"bounds_type": 0,
+				"crop_bottom": 0,
+				"crop_left": 0,
+				"crop_right": 0,
+				"crop_top": 0,
+				"group_item_backup": false,
+				"id": 1,
+				"locked": false,
+				"name": "ATEM Mini Pro",
+				"pos": {
+					"x": 0.0,
+					"y": 0.0
+				},
+				"private_settings": {},
+				"rot": 0.0,
+				"scale": {
+					"x": 1.3333333730697632,
+					"y": 1.3333333730697632
+				},
+				"scale_filter": "disable",
+				"visible": true
+			},
+			{
+				"align": 5,
+				"bounds": {
+					"x": 0.0,
+					"y": 0.0
+				},
+				"bounds_align": 0,
+				"bounds_type": 0,
+				"crop_bottom": 0,
+				"crop_left": 0,
+				"crop_right": 0,
+				"crop_top": 0,
+				"group_item_backup": false,
+				"id": 2,
+				"locked": false,
+				"name": "RodeCaster",
+				"pos": {
+					"x": 0.0,
+					"y": 0.0
+				},
+				"private_settings": {},
+				"rot": 0.0,
+				"scale": {
+					"x": 1.0,
+					"y": 1.0
+				},
+				"scale_filter": "disable",
+				"visible": true
+			},
+			{
+				"align": 5,
+				"bounds": {
+					"x": 0.0,
+					"y": 0.0
+				},
+				"bounds_align": 0,
+				"bounds_type": 0,
+				"crop_bottom": 0,
+				"crop_left": 0,
+				"crop_right": 0,
+				"crop_top": 967,
+				"group_item_backup": false,
+				"id": 3,
+				"locked": false,
+				"name": "script_template_clr_bg",
+				"pos": {
+					"x": 0.0,
+					"y": 1158.0
+				},
+				"private_settings": {},
+				"rot": 0.0,
+				"scale": {
+					"x": 1.3333333730697632,
+					"y": 1.3311258554458618
+				},
+				"scale_filter": "disable",
+				"visible": true
+			},
+			{
+				"align": 5,
+				"bounds": {
+					"x": 0.0,
+					"y": 0.0
+				},
+				"bounds_align": 0,
+				"bounds_type": 0,
+				"crop_bottom": 0,
+				"crop_left": 0,
+				"crop_right": 0,
+				"crop_top": 0,
+				"group_item_backup": false,
+				"id": 4,
+				"locked": false,
+				"name": "script_template_text",
+				"pos": {
+					"x": 923.0,
+					"y": 1170.0
+				},
+				"private_settings": {},
+				"rot": 0.0,
+				"scale": {
+					"x": 1.0,
+					"y": 1.0
+				},
+				"scale_filter": "disable",
+				"visible": true
+			}
+		]
+	},
+	"sync": 0,
+	"versioned_id": "scene",
+	"volume": 1.0
+}
