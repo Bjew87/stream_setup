@@ -9,82 +9,62 @@
         ##     ## ##    ## ##       ##  ##  ## 
         ########   ######  ########  ###  ###  
 
-Script reads 
+    - Script reads Excel file with scene title and text to display and creates OBS scenes.
+    - 
 
 """
-
 import openpyxl
 import os
-
-
 import json
-
-
 import sys
 
-
 def read_xlsx(base_path, input_file, target_file):
-
-    # reading file
-
+    # reading excel file
     file_path = str(input_file)
-
     wb = openpyxl.load_workbook(file_path)
-
     ws = wb.active
-
     # load the template scene data
-
     with open(base_path+'\\json_templates\\script_template_scenes.json', encoding='utf8') as json_file:
         data = json.load(json_file)
         head, tail = os.path.split(target_file)
         data['name'] = tail.replace('.json', '')
-    #
+    # set variables and init
+    scene_title = ""
+    scene_text_ID = ""
+    scene_text = ""
+    # read all rows from excel file
     for idx, row in enumerate(ws.iter_rows()):
-
+        # iterate through all row in the excel except header row
         if idx > 0:
-
+            scene_title = ws.cell(idx+1, 1).value.replace(' ', '_')
+            scene_text_ID = scene_title + "_text"
+            scene_text = ws.cell(idx+1, 2).value
             #
-
-            scene_data = create_scene_data(base_path, ws, idx)
-
+            scene_data = create_scene_data(base_path, scene_title, scene_text_ID)
             #
-
-            text_data = create_text_data(base_path, ws, idx)
-
+            text_data = create_text_data(base_path, scene_text_ID, scene_text)
             #
-
             data['sources'].append(scene_data)
             data['sources'].append(text_data)
+    # we gathered all data and appended it to the template scene collection
     with open(target_file, 'w') as f:
-        # write final scene collection to given file
+        # write final scene collection to target file
         json.dump(data, f, indent=4)
 
 
-def create_scene_data(base_path, ws, idx):
-
-    with open(base_path+'\\json_templates\\scene_template.json') as json_file:
-
+def create_scene_data(base_path, scene_title, scene_text_ID):
+    with open(base_path+'\\json_templates\\scene_template.json', encoding='utf8') as json_file:
         data = json.load(json_file)
-
-        data['name'] = ws.cell(idx+1, 1).value.replace(' ', '_')
-
-        data['settings']['items'][3]['name'] = ws.cell(
-
-            idx+1, 1).value.replace(' ', '_') + "_text"
-
+        data['name'] = scene_title
+        data['settings']['items'][3]['name'] = scene_text_ID
         return data
 
 
-def create_text_data(base_path, ws, idx):
-
-    with open(base_path+'\\json_templates\\text_template.json') as json_file:
-
+def create_text_data(base_path, scene_text_ID, scene_text):
+    with open(base_path+'\\json_templates\\text_template.json', encoding='utf8') as json_file:
         data = json.load(json_file)
-
-        data['name'] = ws.cell(idx+1, 1).value.replace(' ', '_') + "_text"
-
-        data['settings']["text"] = ws.cell(idx+1, 2).value
+        data['name'] = scene_text_ID
+        data['settings']["text"] = scene_text
         return data
 
 
