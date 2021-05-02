@@ -20,10 +20,10 @@
 		"font": {
 			"face": "Arial",
 			"flags": 0,
-			"size": 128,
+			"size": 64,
 			"style": "Standard"
 		},
-		"text": "Ganz viel Text"
+		"text": "???"
 	},
 	"sync": 0,
 	"versioned_id": "text_gdiplus_v2",
