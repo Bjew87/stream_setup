@@ -16,6 +16,7 @@
     - 
 
 """
+from copy import Error
 import openpyxl
 import os
 import json
@@ -53,9 +54,14 @@ def read_xlsx(base_path, input_file, target_file):
                 font_size_line_1 = 64
                 font_size_line_2 = 92
                 posY = 1145
-                text_length = len(scene_text)
                 color = None
-                #
+                text_length = 0
+                # get text length
+                if scene_text is not None:
+                    text_length = len(scene_text)
+                elif scene_text_header is not None:
+                    text_length = len(scene_text_header)
+                # set variable depending on text length
                 if(text_length >= big_text_length):
                     font_size_line_1 = 72
                     font_size_line_2 = 64
@@ -76,12 +82,12 @@ def read_xlsx(base_path, input_file, target_file):
                 if scene_text is not None:
                     text_data = create_text_data(
                         base_path, scene_text_ID, scene_text, font_size_line_2, color)
-                #
+                # create normal scene for short texts
                 if(text_length < big_text_length):
                     scene_data = create_scene_data(
                         base_path, scene_title, scene_text_ID, scene_text_header_ID, posY)
                 else:
-                    #
+                    # create scene for longer texts
                     scene_data = create_scene_data_big_text(
                         base_path, scene_title, scene_text_ID, scene_text_header_ID)
                 # add all created JSON block to the scene collection
@@ -129,14 +135,17 @@ if __name__ == "__main__":
     #
     print('Welcome to the automated scene creation by BJEW')
     #
-    if sys.argv and len(sys.argv) > 2:
-        #
-        input_file = sys.argv[1]
-        target_file = sys.argv[2]
-        #
-        read_xlsx(os.path.dirname(sys.argv[0]), input_file, target_file)
-        #
-        print('Success!')
-    else:
-        #
-        print('Missing parameters!')
+    try:
+        if sys.argv and len(sys.argv) > 2:
+            #
+            input_file = sys.argv[1]
+            target_file = sys.argv[2]
+            #
+            read_xlsx(os.path.dirname(sys.argv[0]), input_file, target_file)
+            #
+            print('Success!')
+        else:
+            #
+            print('Missing parameters!')
+    except Exception as e:
+        print(e)
