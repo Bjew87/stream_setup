@@ -15,7 +15,6 @@
 
     - 
 
-
 """
 import openpyxl
 import os
@@ -23,7 +22,6 @@ import json
 import sys
 
 from openpyxl.descriptors.base import Length
-
 
 def read_xlsx(base_path, input_file, target_file):
     # reading excel file
@@ -47,31 +45,34 @@ def read_xlsx(base_path, input_file, target_file):
                 scene_title = "[S]__"+ ws.cell(idx+1, 1).value.replace(' ', '_')
                 scene_text_header_ID = scene_title + "_text_header"
                 scene_text_ID = scene_title + "_text"
-                scene_text_line_1 = ws.cell(idx + 1, 2).value
-                scene_text_line_2 = ws.cell(idx + 1, 3).value
+                scene_text_header = ws.cell(idx + 1, 2).value
+                scene_text = ws.cell(idx + 1, 3).value
                 font_size_line_1 = 64
                 font_size_line_2 = 92
                 posY = 1145
-                text_length = len(scene_text_line_2)
+                text_length = len(scene_text)
                 color = None
-                # TODO debug
-                print(text_length)
                 #
                 if(text_length >= big_text_length):
                     font_size_line_1 = 72
                     font_size_line_2 = 64
                     color = 4278190080
                 # only text has been given
-                if scene_text_line_2 is None or (scene_text_line_1 is None and scene_text_line_2 is not None):
+                if scene_text is None or (scene_text_header is None and scene_text is not None):
                     font_size_line_1 = font_size_line_2
                     posY = 1170
+                # only second column has been filled
+                # write text to first header and set text line to None
+                if scene_text_header is None and scene_text is not None:
+                    scene_text_header = scene_text
+                    scene_text = None
                 #
                 text_header_data = create_text_data(
-                    base_path, scene_text_header_ID, scene_text_line_1, font_size_line_1, color)
+                    base_path, scene_text_header_ID, scene_text_header, font_size_line_1, color)
                 #
-                if scene_text_line_2 is not None:
+                if scene_text is not None:
                     text_data = create_text_data(
-                        base_path, scene_text_ID, scene_text_line_2, font_size_line_2, color)
+                        base_path, scene_text_ID, scene_text, font_size_line_2, color)
                 #
                 if(text_length < big_text_length):
                     scene_data = create_scene_data(
