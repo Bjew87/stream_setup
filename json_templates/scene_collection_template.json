@@ -171,7 +171,7 @@
             "push-to-talk": false,
             "push-to-talk-delay": 0,
             "settings": {
-                "file": "C:/Users/Streaming-PC/Nextcloud/Streaming/obs-studio/Text_nach_GD.txt",
+                "file": "C:/Users/Streaming-PC/Nextcloud/Streaming/OpenLP/Text_nach_GD.txt",
                 "font": {
                     "face": "Arial",
                     "flags": 0,
@@ -1325,7 +1325,7 @@
             "push-to-talk": false,
             "push-to-talk-delay": 0,
             "settings": {
-                "file": "C:/Users/Streaming-PC/Nextcloud/Streaming/obs-studio/Text_vor_GD.txt",
+                "file": "C:/Users/Streaming-PC/Nextcloud/Streaming/OpenLP/Text_vor_GD.txt",
                 "font": {
                     "face": "Arial",
                     "flags": 0,

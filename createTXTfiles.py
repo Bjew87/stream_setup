@@ -43,6 +43,9 @@ def read_xlsx(base_path, input_file, target_file):
             if ws.cell(idx+1, 1).value:
                 # start creation of scenes
                 scene_title = "[S]__"+ ws.cell(idx+1, 1).value.replace(' ', '_')
+                #
+                print('Creating Scene: ' + scene_title)
+                #
                 scene_text_header_ID = scene_title + "_text_header"
                 scene_text_ID = scene_title + "_text"
                 scene_text_header = ws.cell(idx + 1, 2).value
@@ -87,6 +90,8 @@ def read_xlsx(base_path, input_file, target_file):
                 data['sources'].append(text_data)
     # we gathered all data and appended it to the template scene collection
     with open(target_file, 'w') as f:
+        #
+        print('Writing scene collection to: ' + target_file)
         # write final scene collection to target file
         json.dump(data, f, indent=4)
 
