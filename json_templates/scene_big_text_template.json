@@ -196,35 +196,6 @@
                 "crop_bottom": 0,
                 "crop_left": 0,
                 "crop_right": 0,
-                "crop_top": 967,
-                "group_item_backup": false,
-                "id": 3,
-                "locked": true,
-                "name": "script_template_clr_bg",
-                "pos": {
-                    "x": 242.0,
-                    "y": 1121.0
-                },
-                "private_settings": {},
-                "rot": 0.0,
-                "scale": {
-                    "x": 1.2072917222976685,
-                    "y": 1.649709939956665
-                },
-                "scale_filter": "disable",
-                "visible": false
-            },
-            {
-                "align": 5,
-                "bounds": {
-                    "x": 0.0,
-                    "y": 0.0
-                },
-                "bounds_align": 0,
-                "bounds_type": 0,
-                "crop_bottom": 0,
-                "crop_left": 0,
-                "crop_right": 0,
                 "crop_top": 0,
                 "group_item_backup": false,
                 "id": 5,
