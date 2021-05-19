@@ -112,9 +112,6 @@
             "name": "GD Main"
         },
         {
-            "name": "Einblendung"
-        },
-        {
             "name": "Lyriks"
         },
         {
@@ -124,7 +121,7 @@
             "name": "Ende"
         },
         {
-            "name": "Szene 2"
+            "name": "Einspielung_Video"
         }
     ],
     "sources": [
@@ -186,6 +183,81 @@
             },
             "sync": 0,
             "versioned_id": "text_gdiplus_v2",
+            "volume": 1.0
+        },
+        {
+            "balance": 0.5,
+            "deinterlace_field_order": 0,
+            "deinterlace_mode": 0,
+            "enabled": true,
+            "flags": 0,
+            "hotkeys": {},
+            "id": "color_source",
+            "mixers": 0,
+            "monitoring_type": 0,
+            "muted": false,
+            "name": "bg_frame",
+            "prev_ver": 436273153,
+            "private_settings": {},
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "settings": {
+                "color": 4291400535
+            },
+            "sync": 0,
+            "versioned_id": "color_source_v3",
+            "volume": 1.0
+        },
+        {
+            "balance": 0.5,
+            "deinterlace_field_order": 0,
+            "deinterlace_mode": 0,
+            "enabled": true,
+            "flags": 0,
+            "hotkeys": {},
+            "id": "color_source",
+            "mixers": 0,
+            "monitoring_type": 0,
+            "muted": false,
+            "name": "video_frame",
+            "prev_ver": 436273153,
+            "private_settings": {},
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "settings": {
+                "color": 4291400535
+            },
+            "sync": 0,
+            "versioned_id": "color_source_v3",
+            "volume": 1.0
+        },
+        {
+            "balance": 0.5,
+            "deinterlace_field_order": 0,
+            "deinterlace_mode": 0,
+            "enabled": true,
+            "flags": 0,
+            "hotkeys": {},
+            "id": "color_source",
+            "mixers": 0,
+            "monitoring_type": 0,
+            "muted": false,
+            "name": "white_bg",
+            "prev_ver": 436273153,
+            "private_settings": {},
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "settings": {
+                "color": 4294967295
+            },
+            "sync": 0,
+            "versioned_id": "color_source_v3",
             "volume": 1.0
         },
         {
@@ -678,148 +750,6 @@
             "flags": 0,
             "hotkeys": {
                 "OBSBasic.SelectScene": [],
-                "libobs.hide_scene_item.ATEM Mini Pro": [],
-                "libobs.hide_scene_item.Firefox Canva": [],
-                "libobs.show_scene_item.ATEM Mini Pro": [],
-                "libobs.show_scene_item.Firefox Canva": []
-            },
-            "id": "scene",
-            "mixers": 0,
-            "monitoring_type": 0,
-            "muted": false,
-            "name": "Einblendung",
-            "prev_ver": 436273153,
-            "private_settings": {},
-            "push-to-mute": false,
-            "push-to-mute-delay": 0,
-            "push-to-talk": false,
-            "push-to-talk-delay": 0,
-            "settings": {
-                "custom_size": false,
-                "id_counter": 2,
-                "items": [
-                    {
-                        "align": 5,
-                        "bounds": {
-                            "x": 2560.0,
-                            "y": 1440.0
-                        },
-                        "bounds_align": 0,
-                        "bounds_type": 2,
-                        "crop_bottom": 0,
-                        "crop_left": 0,
-                        "crop_right": 0,
-                        "crop_top": 0,
-                        "group_item_backup": false,
-                        "id": 2,
-                        "locked": false,
-                        "name": "ATEM Mini Pro",
-                        "pos": {
-                            "x": 0.0,
-                            "y": 0.0
-                        },
-                        "private_settings": {},
-                        "rot": 0.0,
-                        "scale": {
-                            "x": 1.0,
-                            "y": 1.0
-                        },
-                        "scale_filter": "disable",
-                        "visible": true
-                    },
-                    {
-                        "align": 5,
-                        "bounds": {
-                            "x": 2560.0,
-                            "y": 1440.0
-                        },
-                        "bounds_align": 0,
-                        "bounds_type": 2,
-                        "crop_bottom": 0,
-                        "crop_left": 0,
-                        "crop_right": 0,
-                        "crop_top": 0,
-                        "group_item_backup": false,
-                        "id": 1,
-                        "locked": false,
-                        "name": "Firefox Canva",
-                        "pos": {
-                            "x": 0.0,
-                            "y": 0.0
-                        },
-                        "private_settings": {},
-                        "rot": 0.0,
-                        "scale": {
-                            "x": 1.0,
-                            "y": 1.0
-                        },
-                        "scale_filter": "disable",
-                        "visible": true
-                    }
-                ]
-            },
-            "sync": 0,
-            "versioned_id": "scene",
-            "volume": 1.0
-        },
-        {
-            "balance": 0.5,
-            "deinterlace_field_order": 0,
-            "deinterlace_mode": 0,
-            "enabled": true,
-            "filters": [
-                {
-                    "balance": 0.5,
-                    "deinterlace_field_order": 0,
-                    "deinterlace_mode": 0,
-                    "enabled": true,
-                    "flags": 0,
-                    "hotkeys": {},
-                    "id": "chroma_key_filter",
-                    "mixers": 0,
-                    "monitoring_type": 0,
-                    "muted": false,
-                    "name": "Chroma Key",
-                    "prev_ver": 436273153,
-                    "private_settings": {},
-                    "push-to-mute": false,
-                    "push-to-mute-delay": 0,
-                    "push-to-talk": false,
-                    "push-to-talk-delay": 0,
-                    "settings": {},
-                    "sync": 0,
-                    "versioned_id": "chroma_key_filter",
-                    "volume": 1.0
-                }
-            ],
-            "flags": 0,
-            "hotkeys": {},
-            "id": "window_capture",
-            "mixers": 0,
-            "monitoring_type": 0,
-            "muted": false,
-            "name": "Firefox Canva",
-            "prev_ver": 436273153,
-            "private_settings": {},
-            "push-to-mute": false,
-            "push-to-mute-delay": 0,
-            "push-to-talk": false,
-            "push-to-talk-delay": 0,
-            "settings": {
-                "window": "Bußlied – Desktop-Hintergrundbild - Mozilla Firefox:MozillaWindowClass:firefox.exe"
-            },
-            "sync": 0,
-            "versioned_id": "window_capture",
-            "volume": 1.0
-        },
-        {
-            "balance": 0.5,
-            "deinterlace_field_order": 0,
-            "deinterlace_mode": 0,
-            "enabled": true,
-            "flags": 0,
-            "hotkeys": {
-                "OBSBasic.SelectScene": [],
                 "libobs.hide_scene_item.Abendmahl Bild": [],
                 "libobs.hide_scene_item.Hl Abendmahl": [],
                 "libobs.hide_scene_item.bl<ues Band": [],
@@ -1210,7 +1140,7 @@
             "mixers": 0,
             "monitoring_type": 0,
             "muted": false,
-            "name": "Szene 2",
+            "name": "Einspielung_Video",
             "prev_ver": 436273153,
             "private_settings": {},
             "push-to-mute": false,

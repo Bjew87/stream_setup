@@ -1,0 +1,309 @@
+{
+    "balance": 0.5,
+    "deinterlace_field_order": 0,
+    "deinterlace_mode": 0,
+    "enabled": true,
+    "flags": 0,
+    "hotkeys": {
+        "OBSBasic.SelectScene": [],
+        "libobs.hide_scene_item.ATEM Mini Pro": [],
+        "libobs.hide_scene_item.Lyrics_text": [],
+        "libobs.hide_scene_item._text_header": [],
+        "libobs.hide_scene_item.RodeCaster": [],
+        "libobs.hide_scene_item.bg_frame": [],
+        "libobs.hide_scene_item.logo": [],
+        "libobs.hide_scene_item.script_template_clr_bg": [],
+        "libobs.hide_scene_item.video_frame": [],
+        "libobs.hide_scene_item.white_bg": [],
+        "libobs.show_scene_item.ATEM Mini Pro": [],
+        "libobs.show_scene_item._Lyrics_text": [],
+        "libobs.show_scene_item._Lyrics_text_header": [],
+        "libobs.show_scene_item.RodeCaster": [],
+        "libobs.show_scene_item.bg_frame": [],
+        "libobs.show_scene_item.logo": [],
+        "libobs.show_scene_item.script_template_clr_bg": [],
+        "libobs.show_scene_item.video_frame": [],
+        "libobs.show_scene_item.white_bg": []
+    },
+    "id": "scene",
+    "mixers": 0,
+    "monitoring_type": 0,
+    "muted": false,
+    "name": "Eingangslied_Lyrics",
+    "prev_ver": 436273153,
+    "private_settings": {},
+    "push-to-mute": false,
+    "push-to-mute-delay": 0,
+    "push-to-talk": false,
+    "push-to-talk-delay": 0,
+    "settings": {
+        "custom_size": false,
+        "id_counter": 9,
+        "items": [
+            {
+                "align": 5,
+                "bounds": {
+                    "x": 0.0,
+                    "y": 0.0
+                },
+                "bounds_align": 0,
+                "bounds_type": 0,
+                "crop_bottom": 0,
+                "crop_left": 0,
+                "crop_right": 0,
+                "crop_top": 0,
+                "group_item_backup": false,
+                "id": 7,
+                "locked": true,
+                "name": "bg_frame",
+                "pos": {
+                    "x": 0.0,
+                    "y": 0.0
+                },
+                "private_settings": {},
+                "rot": 0.0,
+                "scale": {
+                    "x": 1.3333333730697632,
+                    "y": 1.3333333730697632
+                },
+                "scale_filter": "disable",
+                "visible": true
+            },
+            {
+                "align": 5,
+                "bounds": {
+                    "x": 0.0,
+                    "y": 0.0
+                },
+                "bounds_align": 0,
+                "bounds_type": 0,
+                "crop_bottom": 0,
+                "crop_left": 0,
+                "crop_right": 0,
+                "crop_top": 0,
+                "group_item_backup": false,
+                "id": 8,
+                "locked": true,
+                "name": "white_bg",
+                "pos": {
+                    "x": 41.0,
+                    "y": 19.0
+                },
+                "private_settings": {},
+                "rot": 0.0,
+                "scale": {
+                    "x": 1.2880208492279053,
+                    "y": 1.2879629135131836
+                },
+                "scale_filter": "disable",
+                "visible": true
+            },
+            {
+                "align": 5,
+                "bounds": {
+                    "x": 0.0,
+                    "y": 0.0
+                },
+                "bounds_align": 0,
+                "bounds_type": 0,
+                "crop_bottom": 0,
+                "crop_left": 0,
+                "crop_right": 0,
+                "crop_top": 0,
+                "group_item_backup": false,
+                "id": 9,
+                "locked": true,
+                "name": "video_frame",
+                "pos": {
+                    "x": 1221.0,
+                    "y": 670.0
+                },
+                "private_settings": {},
+                "rot": 0.0,
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0
+                },
+                "scale_filter": "disable",
+                "visible": true
+            },
+            {
+                "align": 5,
+                "bounds": {
+                    "x": 0.0,
+                    "y": 0.0
+                },
+                "bounds_align": 0,
+                "bounds_type": 0,
+                "crop_bottom": 0,
+                "crop_left": 0,
+                "crop_right": 0,
+                "crop_top": 0,
+                "group_item_backup": false,
+                "id": 1,
+                "locked": true,
+                "name": "ATEM Mini Pro",
+                "pos": {
+                    "x": 1247.0,
+                    "y": 696.0
+                },
+                "private_settings": {},
+                "rot": 0.0,
+                "scale": {
+                    "x": 0.65989583730697632,
+                    "y": 0.66018515825271606
+                },
+                "scale_filter": "disable",
+                "visible": true
+            },
+            {
+                "align": 5,
+                "bounds": {
+                    "x": 0.0,
+                    "y": 0.0
+                },
+                "bounds_align": 0,
+                "bounds_type": 0,
+                "crop_bottom": 0,
+                "crop_left": 0,
+                "crop_right": 0,
+                "crop_top": 0,
+                "group_item_backup": false,
+                "id": 2,
+                "locked": true,
+                "name": "RodeCaster",
+                "pos": {
+                    "x": 0.0,
+                    "y": 0.0
+                },
+                "private_settings": {},
+                "rot": 0.0,
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0
+                },
+                "scale_filter": "disable",
+                "visible": true
+            },
+            {
+                "align": 5,
+                "bounds": {
+                    "x": 0.0,
+                    "y": 0.0
+                },
+                "bounds_align": 0,
+                "bounds_type": 0,
+                "crop_bottom": 0,
+                "crop_left": 0,
+                "crop_right": 0,
+                "crop_top": 967,
+                "group_item_backup": false,
+                "id": 3,
+                "locked": true,
+                "name": "script_template_clr_bg",
+                "pos": {
+                    "x": 242.0,
+                    "y": 1121.0
+                },
+                "private_settings": {},
+                "rot": 0.0,
+                "scale": {
+                    "x": 1.2072917222976685,
+                    "y": 1.649709939956665
+                },
+                "scale_filter": "disable",
+                "visible": false
+            },
+            {
+                "align": 5,
+                "bounds": {
+                    "x": 0.0,
+                    "y": 0.0
+                },
+                "bounds_align": 0,
+                "bounds_type": 0,
+                "crop_bottom": 0,
+                "crop_left": 0,
+                "crop_right": 0,
+                "crop_top": 0,
+                "group_item_backup": false,
+                "id": 5,
+                "locked": true,
+                "name": "logo",
+                "pos": {
+                    "x": 2372.0,
+                    "y": 18.0
+                },
+                "private_settings": {},
+                "rot": 0.0,
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0
+                },
+                "scale_filter": "disable",
+                "visible": true
+            },
+            {
+                "align": 5,
+                "bounds": {
+                    "x": 0.0,
+                    "y": 0.0
+                },
+                "bounds_align": 0,
+                "bounds_type": 0,
+                "crop_bottom": 0,
+                "crop_left": 0,
+                "crop_right": 0,
+                "crop_top": 0,
+                "group_item_backup": false,
+                "id": 4,
+                "locked": true,
+                "name": "Lyrics_text",
+                "pos": {
+                    "x": 101.0,
+                    "y": 163.0
+                },
+                "private_settings": {},
+                "rot": 0.0,
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0
+                },
+                "scale_filter": "disable",
+                "visible": true
+            },
+            {
+                "align": 5,
+                "bounds": {
+                    "x": 0.0,
+                    "y": 0.0
+                },
+                "bounds_align": 0,
+                "bounds_type": 0,
+                "crop_bottom": 0,
+                "crop_left": 0,
+                "crop_right": 0,
+                "crop_top": 0,
+                "group_item_backup": false,
+                "id": 6,
+                "locked": true,
+                "name": "Lyrics_text_header",
+                "pos": {
+                    "x": 102.0,
+                    "y": 63.0
+                },
+                "private_settings": {},
+                "rot": 0.0,
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0
+                },
+                "scale_filter": "disable",
+                "visible": true
+            }
+        ]
+    },
+    "sync": 0,
+    "versioned_id": "scene",
+    "volume": 1.0
+}
