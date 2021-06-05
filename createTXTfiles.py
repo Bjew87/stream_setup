@@ -54,6 +54,7 @@ def read_xlsx(base_path, input_file, target_file):
                 posY = 1145
                 color = None
                 text_length = 0
+                text_data = None
                 # get text length
                 if scene_text is not None:
                     text_length = len(scene_text)
@@ -91,7 +92,8 @@ def read_xlsx(base_path, input_file, target_file):
                 # add all created JSON block to the scene collection
                 data['sources'].append(scene_data)
                 data['sources'].append(text_header_data)
-                data['sources'].append(text_data)
+                if text_data:
+                    data['sources'].append(text_data)
                 #
                 print('Successfully created scene: ' + scene_title)
     # we gathered all data and appended it to the template scene collection
