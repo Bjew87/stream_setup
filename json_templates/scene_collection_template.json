@@ -30,7 +30,7 @@
         "volume": 0.11246875673532486
     },
     "current_program_scene": "Ende",
-    "current_scene": "Lyriks",
+    "current_scene": "GD Main",
     "current_transition": "Überblende",
     "groups": [],
     "modules": {
@@ -112,16 +112,10 @@
             "name": "GD Main"
         },
         {
-            "name": "Lyriks"
-        },
-        {
             "name": "Abendmahl"
         },
         {
             "name": "Ende"
-        },
-        {
-            "name": "Einspielung_Video"
         }
     ],
     "sources": [
@@ -1069,7 +1063,7 @@
             "push-to-talk": false,
             "push-to-talk-delay": 0,
             "settings": {
-                "file": "C:/Users/Streaming-PC/Nextcloud/Photos/2021_04_28/IMG_7199.JPG"
+                "file": "C:/Users/Streaming-PC/Nextcloud/Photos/Altar.JPG"
             },
             "sync": 0,
             "versioned_id": "image_source",
@@ -1094,7 +1088,7 @@
             "push-to-talk": false,
             "push-to-talk-delay": 0,
             "settings": {
-                "file": "C:/Users/Streaming-PC/Nextcloud/Photos/2021_04_28/IMG_7198.JPG"
+                "file": "C:/Users/Streaming-PC/Nextcloud/Photos/Altar.JPG"
             },
             "sync": 0,
             "versioned_id": "image_source",
@@ -1119,71 +1113,10 @@
             "push-to-talk": false,
             "push-to-talk-delay": 0,
             "settings": {
-                "file": "C:/Users/Streaming-PC/Nextcloud/Photos/2021_04_28/IMG_7200.JPG"
+                "file": "C:/Users/Streaming-PC/Nextcloud/Photos/Altar.JPG"
             },
             "sync": 0,
             "versioned_id": "image_source",
-            "volume": 1.0
-        },
-        {
-            "balance": 0.5,
-            "deinterlace_field_order": 0,
-            "deinterlace_mode": 0,
-            "enabled": true,
-            "flags": 0,
-            "hotkeys": {
-                "OBSBasic.SelectScene": [],
-                "libobs.hide_scene_item.VLC-Videoquelle": [],
-                "libobs.show_scene_item.VLC-Videoquelle": []
-            },
-            "id": "scene",
-            "mixers": 0,
-            "monitoring_type": 0,
-            "muted": false,
-            "name": "Einspielung_Video",
-            "prev_ver": 436273153,
-            "private_settings": {},
-            "push-to-mute": false,
-            "push-to-mute-delay": 0,
-            "push-to-talk": false,
-            "push-to-talk-delay": 0,
-            "settings": {
-                "custom_size": false,
-                "id_counter": 1,
-                "items": [
-                    {
-                        "align": 5,
-                        "bounds": {
-                            "x": 2560.0,
-                            "y": 1440.0
-                        },
-                        "bounds_align": 0,
-                        "bounds_type": 2,
-                        "crop_bottom": 0,
-                        "crop_left": 0,
-                        "crop_right": 0,
-                        "crop_top": 0,
-                        "group_item_backup": false,
-                        "id": 1,
-                        "locked": false,
-                        "name": "VLC-Videoquelle",
-                        "pos": {
-                            "x": 0.0,
-                            "y": 0.0
-                        },
-                        "private_settings": {},
-                        "rot": 0.0,
-                        "scale": {
-                            "x": 1.0,
-                            "y": 1.0
-                        },
-                        "scale_filter": "disable",
-                        "visible": true
-                    }
-                ]
-            },
-            "sync": 0,
-            "versioned_id": "scene",
             "volume": 1.0
         },
         {
@@ -1337,129 +1270,6 @@
             },
             "sync": 0,
             "versioned_id": "text_gdiplus_v2",
-            "volume": 1.0
-        },
-        {
-            "balance": 0.5,
-            "deinterlace_field_order": 0,
-            "deinterlace_mode": 0,
-            "enabled": true,
-            "flags": 0,
-            "hotkeys": {
-                "OBSBasic.SelectScene": [],
-                "libobs.hide_scene_item.ATEM Mini Pro": [],
-                "libobs.hide_scene_item.bl<ues Band": [],
-                "libobs.hide_scene_item.openLP": [],
-                "libobs.show_scene_item.ATEM Mini Pro": [],
-                "libobs.show_scene_item.bl<ues Band": [],
-                "libobs.show_scene_item.openLP": []
-            },
-            "id": "scene",
-            "mixers": 0,
-            "monitoring_type": 0,
-            "muted": false,
-            "name": "Lyriks",
-            "prev_ver": 436273153,
-            "private_settings": {},
-            "push-to-mute": false,
-            "push-to-mute-delay": 0,
-            "push-to-talk": false,
-            "push-to-talk-delay": 0,
-            "settings": {
-                "custom_size": false,
-                "id_counter": 4,
-                "items": [
-                    {
-                        "align": 5,
-                        "bounds": {
-                            "x": 2560.0,
-                            "y": 1440.0
-                        },
-                        "bounds_align": 0,
-                        "bounds_type": 2,
-                        "crop_bottom": 0,
-                        "crop_left": 0,
-                        "crop_right": 0,
-                        "crop_top": 0,
-                        "group_item_backup": false,
-                        "id": 4,
-                        "locked": false,
-                        "name": "ATEM Mini Pro",
-                        "pos": {
-                            "x": 0.0,
-                            "y": -1.0
-                        },
-                        "private_settings": {},
-                        "rot": 0.0,
-                        "scale": {
-                            "x": 1.0,
-                            "y": 1.0
-                        },
-                        "scale_filter": "disable",
-                        "visible": true
-                    },
-                    {
-                        "align": 5,
-                        "bounds": {
-                            "x": 0.0,
-                            "y": 0.0
-                        },
-                        "bounds_align": 0,
-                        "bounds_type": 0,
-                        "crop_bottom": 82,
-                        "crop_left": 0,
-                        "crop_right": 0,
-                        "crop_top": 793,
-                        "group_item_backup": false,
-                        "id": 2,
-                        "locked": false,
-                        "name": "bl<ues Band",
-                        "pos": {
-                            "x": 0.0,
-                            "y": 895.0
-                        },
-                        "private_settings": {},
-                        "rot": 0.0,
-                        "scale": {
-                            "x": 2.2244791984558105,
-                            "y": 2.2243902683258057
-                        },
-                        "scale_filter": "disable",
-                        "visible": true
-                    },
-                    {
-                        "align": 5,
-                        "bounds": {
-                            "x": 2560.0,
-                            "y": 1451.0
-                        },
-                        "bounds_align": 0,
-                        "bounds_type": 2,
-                        "crop_bottom": 102,
-                        "crop_left": 0,
-                        "crop_right": 0,
-                        "crop_top": 0,
-                        "group_item_backup": false,
-                        "id": 3,
-                        "locked": false,
-                        "name": "openLP",
-                        "pos": {
-                            "x": 0.0,
-                            "y": -94.0
-                        },
-                        "private_settings": {},
-                        "rot": 0.0,
-                        "scale": {
-                            "x": 1.0,
-                            "y": 1.0
-                        },
-                        "scale_filter": "disable",
-                        "visible": true
-                    }
-                ]
-            },
-            "sync": 0,
-            "versioned_id": "scene",
             "volume": 1.0
         },
         {

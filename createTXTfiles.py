@@ -2,18 +2,18 @@
 
 """
 
-        ########        ## ######## ##      ## 
-        ##     ##       ## ##       ##  ##  ## 
-        ##     ##       ## ##       ##  ##  ## 
-        ########        ## ######   ##  ##  ## 
-        ##     ## ##    ## ##       ##  ##  ## 
-        ##     ## ##    ## ##       ##  ##  ## 
-        ########   ######  ########  ###  ###  
+        ########        ## ######## ##      ##
+        ##     ##       ## ##       ##  ##  ##
+        ##     ##       ## ##       ##  ##  ##
+        ########        ## ######   ##  ##  ##
+        ##     ## ##    ## ##       ##  ##  ##
+        ##     ## ##    ## ##       ##  ##  ##
+        ########   ######  ########  ###  ###
 
 
     - Script reads Excel file with scene title and text to display and creates OBS scenes.
 
-    - 
+    -
 
 """
 from copy import Error
@@ -23,6 +23,10 @@ import json
 import sys
 
 from openpyxl.descriptors.base import Length
+
+# set default variables
+big_text_length = 175
+
 
 def read_xlsx(base_path, input_file, target_file):
     # reading excel file
@@ -34,8 +38,6 @@ def read_xlsx(base_path, input_file, target_file):
         data = json.load(json_file)
         head, tail = os.path.split(target_file)
         data['name'] = tail.replace('.json', '')
-    # set default variables
-    big_text_length = 175
     # read all rows from excel file
     for idx, row in enumerate(ws.iter_rows()):
         # iterate through all row in the excel except header row
@@ -43,65 +45,155 @@ def read_xlsx(base_path, input_file, target_file):
             # if there is data written
             if ws.cell(idx+1, 1).value:
                 # start creation of scenes
-                scene_title = "[S]__"+ ws.cell(idx+1, 1).value.replace(' ', '_')
+                scene_title = "[S]__" + \
+                    ws.cell(idx+1, 1).value.replace(' ', '_')
                 #
                 scene_text_header_ID = scene_title + "_text_header"
                 scene_text_ID = scene_title + "_text"
                 scene_text_header = ws.cell(idx + 1, 2).value
                 scene_text = ws.cell(idx + 1, 3).value
-                font_size_line_1 = 64
-                font_size_line_2 = 92
-                posY = 1145
-                color = None
-                text_length = 0
-                text_data = None
-                # get text length
-                if scene_text is not None:
-                    text_length = len(scene_text)
-                elif scene_text_header is not None:
-                    text_length = len(scene_text_header)
-                # set variable depending on text length
-                if(text_length >= big_text_length):
-                    font_size_line_1 = 72
-                    font_size_line_2 = 64
-                    color = 4278190080
-                # only text has been given
-                if scene_text is None or (scene_text_header is None and scene_text is not None):
-                    font_size_line_1 = font_size_line_2
-                    posY = 1170
-                # only second column has been filled
-                # write text to first header and set text line to None
-                if scene_text_header is None and scene_text is not None:
-                    scene_text_header = scene_text
-                    scene_text = None
                 #
-                text_header_data = create_text_data(
-                    base_path, scene_text_header_ID, scene_text_header, font_size_line_1, color)
-                #
-                if scene_text is not None:
-                    text_data = create_text_data(
-                        base_path, scene_text_ID, scene_text, font_size_line_2, color)
-                # create normal scene for short texts
-                if(text_length < big_text_length):
-                    scene_data = create_scene_data(
-                        base_path, scene_title, scene_text_ID, scene_text_header_ID, posY)
-                else:
-                    # create scene for longer texts
-                    scene_data = create_scene_data_big_text(
-                        base_path, scene_title, scene_text_ID, scene_text_header_ID)
+                scene_data, text_header_data, text_data = create_json_data(
+                    scene_text, scene_text_header, base_path, scene_text_header_ID, scene_text_ID, scene_title)
                 # add all created JSON block to the scene collection
-                data['sources'].append(scene_data)
-                data['sources'].append(text_header_data)
-                if text_data:
-                    data['sources'].append(text_data)
-                #
-                print('Successfully created scene: ' + scene_title)
+                append_json_data_to_sceneset(data, scene_data, text_header_data,
+                                             text_data, scene_title)
+    # write dummy scenes for use if something comes up
+    create_dummy_scenes(scene_text, scene_text_header,
+                        base_path, scene_text_header_ID, scene_text_ID, scene_title, data)
     # we gathered all data and appended it to the template scene collection
     with open(target_file, 'w') as f:
         #
         print('Writing scene collection to: ' + target_file)
         # write final scene collection to target file
         json.dump(data, f, indent=4)
+
+
+def create_dummy_scenes(scene_text, scene_text_header, base_path, scene_text_header_ID, scene_text_ID, scene_title, data):
+    # start creation of scenes
+    scene_title = "[S]____Vorlage_zwei_Zeilen_1"
+    scene_text_header_ID = scene_title + "_text_header"
+    scene_text_ID = scene_title + "_text"
+    scene_text_header = 'Vorlage'
+    scene_text = 'Vorlagen Text'
+    scene_data, text_header_data, text_data = create_json_data(
+        scene_text, scene_text_header, base_path, scene_text_header_ID, scene_text_ID, scene_title)
+    # add all created JSON block to the scene collection
+    append_json_data_to_sceneset(data, scene_data, text_header_data,
+                                 text_data, scene_title)
+    # start creation of scenes
+    scene_title = "[S]____Vorlage_zwei_Zeilen_2"
+    scene_text_header_ID = scene_title + "_text_header"
+    scene_text_ID = scene_title + "_text"
+    scene_text_header = 'Vorlage'
+    scene_text = 'Vorlagen Text'
+    scene_data, text_header_data, text_data = create_json_data(
+        scene_text, scene_text_header, base_path, scene_text_header_ID, scene_text_ID, scene_title)
+    # add all created JSON block to the scene collection
+    append_json_data_to_sceneset(data, scene_data, text_header_data,
+                                 text_data, scene_title)
+    #
+    # start creation of scenes
+    scene_title = "[S]____Vorlage_eine_Zeile_1"
+    scene_text_header_ID = scene_title + "_text_header"
+    scene_text_ID = scene_title + "_text"
+    scene_text_header = 'Vorlage'
+    scene_text = None
+    scene_data, text_header_data, text_data = create_json_data(
+        scene_text, scene_text_header, base_path, scene_text_header_ID, scene_text_ID, scene_title)
+    # add all created JSON block to the scene collection
+    append_json_data_to_sceneset(data, scene_data, text_header_data,
+                                 text_data, scene_title)
+    # start creation of scenes
+    scene_title = "[S]____Vorlage_eine_Zeile_2"
+    scene_text_header_ID = scene_title + "_text_header"
+    scene_text_ID = scene_title + "_text"
+    scene_text_header = 'Vorlage'
+    scene_text = None
+    scene_data, text_header_data, text_data = create_json_data(
+        scene_text, scene_text_header, base_path, scene_text_header_ID, scene_text_ID, scene_title)
+    # add all created JSON block to the scene collection
+    append_json_data_to_sceneset(data, scene_data, text_header_data,
+                                 text_data, scene_title)
+    # start creation of scenes
+    scene_title = "[S]____Vorlage_Vollbild_1"
+    scene_text_header_ID = scene_title + "_text_header"
+    scene_text_ID = scene_title + "_text"
+    scene_text_header = 'Vorlagen Text'
+    scene_text = 'Vorlagen Text Vorlagen Text Vorlagen Text Vorlagen Text Vorlagen Text Vorlagen Text Vorlagen Text Vorlagen Text Vorlagen Text Vorlagen Text Vorlagen Text Vorlagen Text Vorlagen Text Vorlagen Text Vorlagen Text Vorlagen Text Vorlagen Text Vorlagen Text '
+    scene_data, text_header_data, text_data = create_json_data(
+        scene_text, scene_text_header, base_path, scene_text_header_ID, scene_text_ID, scene_title)
+    # add all created JSON block to the scene collection
+    append_json_data_to_sceneset(data, scene_data, text_header_data,
+                                 text_data, scene_title)
+    # start creation of scenes
+    scene_title = "[S]____Vorlage_Vollbild_2"
+    scene_text_header_ID = scene_title + "_text_header"
+    scene_text_ID = scene_title + "_text"
+    scene_text_header = 'Vorlagen Text'
+    scene_text = 'Vorlagen Text Vorlagen Text Vorlagen Text Vorlagen Text Vorlagen Text Vorlagen Text Vorlagen Text Vorlagen Text Vorlagen Text Vorlagen Text Vorlagen Text Vorlagen Text Vorlagen Text Vorlagen Text Vorlagen Text Vorlagen Text Vorlagen Text Vorlagen Text '
+    scene_data, text_header_data, text_data = create_json_data(
+        scene_text, scene_text_header, base_path, scene_text_header_ID, scene_text_ID, scene_title)
+    # add all created JSON block to the scene collection
+    append_json_data_to_sceneset(data, scene_data, text_header_data,
+                                 text_data, scene_title)
+
+
+def append_json_data_to_sceneset(data, scene_data, text_header_data, text_data, scene_title):
+    # add all created JSON block to the scene collection
+    data['sources'].append(scene_data)
+    data['sources'].append(text_header_data)
+    if text_data:
+        data['sources'].append(text_data)
+    #
+    print('Successfully created scene: ' + scene_title)
+
+
+def create_json_data(scene_text, scene_text_header, base_path, scene_text_header_ID, scene_text_ID, scene_title):
+    #
+    font_size_header = 64
+    font_size_main = 92
+    posY = 1145
+    color = None
+    text_length = 0
+    text_data = None
+    # get text length
+    if scene_text is not None:
+        text_length = len(scene_text)
+    elif scene_text_header is not None:
+        text_length = len(scene_text_header)
+    # set variable depending on text length
+    if text_length >= big_text_length:
+        font_size_header = 72
+        font_size_main = 64
+        color = 4278190080
+    elif text_length < big_text_length and text_length > (big_text_length / 2):
+        font_size_main = 48
+    # only text has been given
+    if scene_text is None or (scene_text_header is None and scene_text is not None):
+        font_size_header = font_size_main
+        posY = 1170
+    # only second column has been filled
+    # write text to first header and set text line to None
+    if scene_text_header is None and scene_text is not None:
+        scene_text_header = scene_text
+        scene_text = None
+    #
+    text_header_data = create_text_data(
+        base_path, scene_text_header_ID, scene_text_header, font_size_header, color)
+    #
+    if scene_text is not None:
+        text_data = create_text_data(
+            base_path, scene_text_ID, scene_text, font_size_main, color)
+    # create normal scene for short texts
+    if(text_length < big_text_length):
+        scene_data = create_scene_data(
+            base_path, scene_title, scene_text_ID, scene_text_header_ID, posY)
+    else:
+        # create scene for longer texts
+        scene_data = create_scene_data_big_text(
+            base_path, scene_title, scene_text_ID, scene_text_header_ID)
+    return scene_data, text_header_data, text_data
 
 
 def create_scene_data_big_text(base_path, scene_title, scene_text_ID, scene_text_header_ID):
@@ -111,6 +203,7 @@ def create_scene_data_big_text(base_path, scene_title, scene_text_ID, scene_text
         data['settings']['items'][6]['name'] = scene_text_ID
         data['settings']['items'][7]['name'] = scene_text_header_ID
         return data
+
 
 def create_scene_data(base_path, scene_title, scene_text_ID, scene_text_header_ID, posX):
     with open(base_path+'\\json_templates\\scene_template.json', encoding='utf8') as json_file:
