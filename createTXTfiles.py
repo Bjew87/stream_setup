@@ -22,8 +22,6 @@ import os
 import json
 import sys
 
-from openpyxl.descriptors.base import Length
-
 # set default variables
 big_text_length = 175
 
@@ -47,7 +45,7 @@ def read_xlsx(base_path, input_file, target_file):
                 # start creation of scenes
                 scene_title = "[S]__" + \
                     ws.cell(idx+1, 1).value.replace(' ', '_')
-                #
+                # set IDs for scenes and their parts
                 scene_text_header_ID = scene_title + "_text_header"
                 scene_text_ID = scene_title + "_text"
                 scene_text_header = ws.cell(idx + 1, 2).value
@@ -150,13 +148,15 @@ def append_json_data_to_sceneset(data, scene_data, text_header_data, text_data, 
 
 
 def create_json_data(scene_text, scene_text_header, base_path, scene_text_header_ID, scene_text_ID, scene_title):
-    #
+    # init variables
     font_size_header = 64
     font_size_main = 92
     posY = 1145
     color = None
     text_length = 0
     text_data = None
+    font_style = "Standard"
+    font_flags = 0
     # get text length
     if scene_text is not None:
         text_length = len(scene_text)
@@ -178,13 +178,18 @@ def create_json_data(scene_text, scene_text_header, base_path, scene_text_header
     if scene_text_header is None and scene_text is not None:
         scene_text_header = scene_text
         scene_text = None
+    # check which font style to use, users request 'Fett' text for longer text scenes
+    if text_length >= big_text_length:
+        font_style = "Fett"
+        font_flags = 1
     #
     text_header_data = create_text_data(
-        base_path, scene_text_header_ID, scene_text_header, font_size_header, color)
+        base_path, scene_text_header_ID, scene_text_header, font_size_header, font_flags, font_style, color)
     #
     if scene_text is not None:
+        # create text json
         text_data = create_text_data(
-            base_path, scene_text_ID, scene_text, font_size_main, color)
+            base_path, scene_text_ID, scene_text, font_size_main, font_flags, font_style, color)
     # create normal scene for short texts
     if(text_length < big_text_length):
         scene_data = create_scene_data(
@@ -215,12 +220,14 @@ def create_scene_data(base_path, scene_title, scene_text_ID, scene_text_header_I
         return data
 
 
-def create_text_data(base_path, scene_text_ID, scene_text, font_size, color):
+def create_text_data(base_path, scene_text_ID, scene_text, font_size, font_flags, font_style, color):
     with open(base_path+'\\json_templates\\text_template.json', encoding='utf8') as json_file:
         data = json.load(json_file)
         data['name'] = scene_text_ID
-        data['settings']["text"] = scene_text
-        data['settings']["font"]['size'] = font_size
+        data['settings']['text'] = scene_text
+        data['settings']['font']['size'] = font_size
+        data['settings']['font']['flags'] = font_flags
+        data['settings']['font']['style'] = font_style
         if color:
             data['settings']['color'] = color
         return data
