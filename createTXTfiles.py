@@ -23,6 +23,7 @@ import json
 import sys
 
 # set default variables
+medium_text_length = 60
 big_text_length = 175
 
 
@@ -33,9 +34,9 @@ def read_xlsx(base_path, input_file, target_file):
     ws = wb.active
     # load the template scene collection data
     with open(base_path+'\\json_templates\\scene_collection_template.json', encoding='utf8') as json_file:
-        data = json.load(json_file)
+        scene_collection = json.load(json_file)
         head, tail = os.path.split(target_file)
-        data['name'] = tail.replace('.json', '')
+        scene_collection['name'] = tail.replace('.json', '')
     # read all rows from excel file
     for idx, row in enumerate(ws.iter_rows()):
         # iterate through all row in the excel except header row
@@ -54,17 +55,17 @@ def read_xlsx(base_path, input_file, target_file):
                 scene_data, text_header_data, text_data = create_json_data(
                     scene_text, scene_text_header, base_path, scene_text_header_ID, scene_text_ID, scene_title)
                 # add all created JSON block to the scene collection
-                append_json_data_to_sceneset(data, scene_data, text_header_data,
+                append_json_data_to_sceneset(scene_collection, scene_data, text_header_data,
                                              text_data, scene_title)
     # write dummy scenes for use if something comes up
     create_dummy_scenes(scene_text, scene_text_header,
-                        base_path, scene_text_header_ID, scene_text_ID, scene_title, data)
+                        base_path, scene_text_header_ID, scene_text_ID, scene_title, scene_collection)
     # we gathered all data and appended it to the template scene collection
     with open(target_file, 'w') as f:
         #
         print('Writing scene collection to: ' + target_file)
         # write final scene collection to target file
-        json.dump(data, f, indent=4)
+        json.dump(scene_collection, f, indent=4)
 
 
 def create_dummy_scenes(scene_text, scene_text_header, base_path, scene_text_header_ID, scene_text_ID, scene_title, data):
@@ -167,8 +168,6 @@ def create_json_data(scene_text, scene_text_header, base_path, scene_text_header
         font_size_header = 72
         font_size_main = 64
         color = 4278190080
-    elif text_length < big_text_length and text_length > (big_text_length / 2):
-        font_size_main = 48
     # only text has been given
     if scene_text is None or (scene_text_header is None and scene_text is not None):
         font_size_header = font_size_main
@@ -182,23 +181,47 @@ def create_json_data(scene_text, scene_text_header, base_path, scene_text_header
     if text_length >= big_text_length:
         font_style = "Fett"
         font_flags = 1
-    #
+    # create header json
     text_header_data = create_text_data(
         base_path, scene_text_header_ID, scene_text_header, font_size_header, font_flags, font_style, color)
-    #
+    # create text json
     if scene_text is not None:
-        # create text json
         text_data = create_text_data(
             base_path, scene_text_ID, scene_text, font_size_main, font_flags, font_style, color)
     # create normal scene for short texts
-    if(text_length < big_text_length):
+    if text_length < medium_text_length:
         scene_data = create_scene_data(
             base_path, scene_title, scene_text_ID, scene_text_header_ID, posY)
+    # medium text length
+    elif text_length >= medium_text_length and text_length < big_text_length:
+        # DEBUG:
+        print(">>>>>> MEDIUM !!!!")
+        scene_data = create_scene_data_medium_text(
+            base_path, scene_title, scene_text_ID, scene_text_header_ID)
+    # scene for long texts
     else:
-        # create scene for longer texts
         scene_data = create_scene_data_big_text(
             base_path, scene_title, scene_text_ID, scene_text_header_ID)
+    # return created json types
     return scene_data, text_header_data, text_data
+
+
+def create_scene_data_medium_text(base_path, scene_title, scene_text_ID, scene_text_header_ID):
+    with open(base_path+'\\json_templates\\scene_template.json', encoding='utf8') as json_file:
+        data = json.load(json_file)
+        data['name'] = scene_title
+        data['settings']['items'][4]['name'] = scene_text_ID
+        data['settings']['items'][5]['name'] = scene_text_header_ID
+        # logo
+        data['settings']['items'][2]['pos']['y'] = 1038
+        # bg color band
+        data['settings']['items'][2]['pos']['y'] = 995
+        data['settings']['items'][2]['scale']['y'] = 2.75
+        # text
+        data['settings']['items'][4]['pos']['y'] = 1097
+        # text header
+        data['settings']['items'][5]['pos']['y'] = 1038
+        return data
 
 
 def create_scene_data_big_text(base_path, scene_title, scene_text_ID, scene_text_header_ID):
@@ -210,13 +233,13 @@ def create_scene_data_big_text(base_path, scene_title, scene_text_ID, scene_text
         return data
 
 
-def create_scene_data(base_path, scene_title, scene_text_ID, scene_text_header_ID, posX):
+def create_scene_data(base_path, scene_title, scene_text_ID, scene_text_header_ID, posY):
     with open(base_path+'\\json_templates\\scene_template.json', encoding='utf8') as json_file:
         data = json.load(json_file)
         data['name'] = scene_title
         data['settings']['items'][4]['name'] = scene_text_ID
         data['settings']['items'][5]['name'] = scene_text_header_ID
-        data['settings']['items'][5]['pos']['y'] = posX
+        data['settings']['items'][5]['pos']['y'] = posY
         return data
 
 
