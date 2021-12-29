@@ -1,0 +1,40 @@
+{
+	"balance": 0.5,
+	"deinterlace_field_order": 0,
+	"deinterlace_mode": 0,
+	"enabled": true,
+	"flags": 0,
+	"hotkeys": {
+		"OBSBasic.SelectScene": [],
+		"libobs.hide_scene_item.ATEM Mini Pro": [],
+		"libobs.hide_scene_item.Bibelwort_text": [],
+		"libobs.hide_scene_item.RodeCaster": [],
+		"libobs.hide_scene_item.header_text": [],
+		"libobs.hide_scene_item.logo": [],
+		"libobs.hide_scene_item.script_template_clr_bg": [],
+		"libobs.show_scene_item.ATEM Mini Pro": [],
+		"libobs.show_scene_item.Bibelwort_text": [],
+		"libobs.show_scene_item.RodeCaster": [],
+		"libobs.show_scene_item.header_text": [],
+		"libobs.show_scene_item.logo": [],
+		"libobs.show_scene_item.script_template_clr_bg": []
+	},
+	"id": "scene",
+	"mixers": 0,
+	"monitoring_type": 0,
+	"muted": false,
+	"name": "Bibelwort",
+	"prev_ver": 436273153,
+	"private_settings": {},
+	"push-to-mute": false,
+	"push-to-mute-delay": 0,
+	"push-to-talk": false,
+	"push-to-talk-delay": 0,
+	"settings": {
+		"custom_size": false,
+		"id_counter": 6
+	},
+	"sync": 0,
+	"versioned_id": "scene",
+	"volume": 1.0
+}

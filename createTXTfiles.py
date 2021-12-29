@@ -24,7 +24,7 @@ import sys
 
 # set default variables
 medium_text_length = 60
-big_text_length = 175
+big_text_length = 145
 
 
 def read_xlsx(base_path, input_file, target_file):
@@ -44,19 +44,30 @@ def read_xlsx(base_path, input_file, target_file):
             # if there is data written
             if ws.cell(idx+1, 1).value:
                 # start creation of scenes
-                scene_title = "[S]__" + \
-                    ws.cell(idx+1, 1).value.replace(' ', '_')
+                scene_title_raw = ws.cell(idx+1, 1).value.replace(' ', '_')
+                scene_title = "[S]__" + scene_title_raw
                 # set IDs for scenes and their parts
                 scene_text_header_ID = scene_title + "_text_header"
                 scene_text_ID = scene_title + "_text"
                 scene_text_header = ws.cell(idx + 1, 2).value
                 scene_text = ws.cell(idx + 1, 3).value
                 #
-                scene_data, text_header_data, text_data = create_json_data(
-                    scene_text, scene_text_header, base_path, scene_text_header_ID, scene_text_ID, scene_title)
-                # add all created JSON block to the scene collection
-                append_json_data_to_sceneset(scene_collection, scene_data, text_header_data,
-                                             text_data, scene_title)
+                if scene_title_raw == 'Kategorie':
+                    # check for empty content
+                    if scene_text_header is None:
+                        scene_text_header = scene_title_raw
+                    #
+                    scene_data = create_divider_scene(
+                        base_path, ">>>>>>>>>>> "+scene_text_header+" <<<<<<<<<<")
+                    append_json_data_to_sceneset(scene_collection, scene_data, None,
+                                                 None, scene_text_header)
+                else:
+                    #
+                    scene_data, text_header_data, text_data = create_json_data(
+                        scene_text, scene_text_header, base_path, scene_text_header_ID, scene_text_ID, scene_title)
+                    # add all created JSON block to the scene collection
+                    append_json_data_to_sceneset(scene_collection, scene_data, text_header_data,
+                                                text_data, scene_title)
     # write dummy scenes for use if something comes up
     create_dummy_scenes(scene_text, scene_text_header,
                         base_path, scene_text_header_ID, scene_text_ID, scene_title, scene_collection)
@@ -69,6 +80,11 @@ def read_xlsx(base_path, input_file, target_file):
 
 
 def create_dummy_scenes(scene_text, scene_text_header, base_path, scene_text_header_ID, scene_text_ID, scene_title, data):
+    #
+    scene_data = create_divider_scene(
+        base_path, ">>>>>>>>>>> Backup Vorlagen <<<<<<<<<<")
+    append_json_data_to_sceneset(data, scene_data, None,
+                                 None, "divider")
     # start creation of scenes
     scene_title = "[S]____Vorlage_zwei_Zeilen_1"
     scene_text_header_ID = scene_title + "_text_header"
@@ -141,7 +157,8 @@ def create_dummy_scenes(scene_text, scene_text_header, base_path, scene_text_hea
 def append_json_data_to_sceneset(data, scene_data, text_header_data, text_data, scene_title):
     # add all created JSON block to the scene collection
     data['sources'].append(scene_data)
-    data['sources'].append(text_header_data)
+    if text_header_data:
+        data['sources'].append(text_header_data)
     if text_data:
         data['sources'].append(text_data)
     #
@@ -230,6 +247,13 @@ def create_scene_data_big_text(base_path, scene_title, scene_text_ID, scene_text
         data['name'] = scene_title
         data['settings']['items'][6]['name'] = scene_text_ID
         data['settings']['items'][7]['name'] = scene_text_header_ID
+        return data
+
+
+def create_divider_scene(base_path, scene_title):
+    with open(base_path+'\\json_templates\\divider_template.json', encoding='utf8') as json_file:
+        data = json.load(json_file)
+        data['name'] = scene_title
         return data
 
 
