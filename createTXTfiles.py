@@ -12,9 +12,7 @@
 
 
     - Script reads Excel file with scene title and text to display and creates OBS scenes.
-
-    -
-
+    
 """
 from copy import Error
 import openpyxl
