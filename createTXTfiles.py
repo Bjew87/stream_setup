@@ -11,9 +11,14 @@
         ########   ######  ########  ###  ###
 
 
-    - Script reads Excel file with scene title and text to display and creates OBS scenes.
-    
+    - Script reads Excel file with scene title and text to display and creates OBS scenes
+    - Script creates different kind of scenes based on the amount of text to display
+    - Script will create template scenes at the end of created scenes
+    - Script is capable of creation "section scenes"
+
 """
+
+# import needed libraries
 from copy import Error
 import openpyxl
 import os
@@ -28,12 +33,17 @@ big_text_length = 145
 def read_xlsx(base_path, input_file, target_file):
     # reading excel file
     file_path = str(input_file)
+    # load workbook based on file_path
     wb = openpyxl.load_workbook(file_path)
+    # get active work sheet
     ws = wb.active
     # load the template scene collection data
     with open(base_path+'\\json_templates\\scene_collection_template.json', encoding='utf8') as json_file:
+        # get scene collection from json file
         scene_collection = json.load(json_file)
+        # split target file path and read name into 'tail'
         head, tail = os.path.split(target_file)
+        # set name of scene collection based on target file
         scene_collection['name'] = tail.replace('.json', '')
     # read all rows from excel file
     for idx, row in enumerate(ws.iter_rows()):
@@ -65,7 +75,7 @@ def read_xlsx(base_path, input_file, target_file):
                         scene_text, scene_text_header, base_path, scene_text_header_ID, scene_text_ID, scene_title)
                     # add all created JSON block to the scene collection
                     append_json_data_to_sceneset(scene_collection, scene_data, text_header_data,
-                                                text_data, scene_title)
+                                                 text_data, scene_title)
     # write dummy scenes for use if something comes up
     create_dummy_scenes(scene_text, scene_text_header,
                         base_path, scene_text_header_ID, scene_text_ID, scene_title, scene_collection)
