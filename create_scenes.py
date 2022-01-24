@@ -10,6 +10,9 @@
         ##     ## ##    ## ##       ##  ##  ##
         ########   ######  ########  ###  ###
 
+Name:   create_scenes.py
+Author: Bjew
+Web:    www.bjew.de
 
     - Script reads Excel file with scene title and text to display and creates OBS scenes
     - Script creates different kind of scenes based on the amount of text to display
