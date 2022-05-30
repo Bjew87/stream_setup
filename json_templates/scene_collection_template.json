@@ -147,7 +147,7 @@
                     "push-to-talk": false,
                     "push-to-talk-delay": 0,
                     "settings": {
-                        "speed_x": 120.0
+                        "speed_x": 140.0
                     },
                     "sync": 0,
                     "versioned_id": "scroll_filter",
@@ -1279,7 +1279,7 @@
                     "push-to-talk": false,
                     "push-to-talk-delay": 0,
                     "settings": {
-                        "speed_x": 120.0,
+                        "speed_x": 140.0,
                         "speed_y": 0.0
                     },
                     "sync": 0,
