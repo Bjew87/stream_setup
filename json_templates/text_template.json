@@ -5,7 +5,7 @@
 	"enabled": true,
 	"flags": 0,
 	"hotkeys": {},
-	"id": "text_gdiplus",
+	"id": "text_ft2_source",
 	"mixers": 0,
 	"monitoring_type": 0,
 	"muted": false,
@@ -20,12 +20,11 @@
 		"font": {
 			"face": "Arial",
 			"flags": 0,
-			"size": 64,
-			"style": "Standard"
+			"size": 64
 		},
 		"text": "???"
 	},
 	"sync": 0,
-	"versioned_id": "text_gdiplus_v2",
+	"versioned_id": "text_ft2_source_v2",
 	"volume": 1.0
 }

@@ -43,8 +43,8 @@
             {
                 "align": 5,
                 "bounds": {
-                    "x": 0.0,
-                    "y": 0.0
+                    "x": 2560,
+                    "y": 1440
                 },
                 "bounds_align": 0,
                 "bounds_type": 0,
@@ -63,8 +63,8 @@
                 "private_settings": {},
                 "rot": 0.0,
                 "scale": {
-                    "x": 1.3333333730697632,
-                    "y": 1.3333333730697632
+                    "x": 1,
+                    "y": 1
                 },
                 "scale_filter": "disable",
                 "visible": true
@@ -86,14 +86,14 @@
                 "locked": true,
                 "name": "white_bg",
                 "pos": {
-                    "x": 41.0,
-                    "y": 19.0
+                    "x": 30,
+                    "y": 30
                 },
                 "private_settings": {},
                 "rot": 0.0,
                 "scale": {
-                    "x": 1.2880208492279053,
-                    "y": 1.2879629135131836
+                    "x": 1,
+                    "y": 1
                 },
                 "scale_filter": "disable",
                 "visible": true
@@ -115,8 +115,8 @@
                 "locked": true,
                 "name": "video_frame",
                 "pos": {
-                    "x": 1221.0,
-                    "y": 670.0
+                    "x": 2130,
+                    "y": 1185
                 },
                 "private_settings": {},
                 "rot": 0.0,

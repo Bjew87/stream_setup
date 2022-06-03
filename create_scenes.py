@@ -252,6 +252,7 @@ def create_text_data(base_path, scene_text_ID, scene_text, font_size, font_flags
         data = json.load(json_file)
         data['name'] = scene_text_ID
         data['settings']['text'] = scene_text
+        data['settings']['font']['face'] = "Arial"
         data['settings']['font']['size'] = font_size
         data['settings']['font']['flags'] = font_flags
         data['settings']['font']['style'] = font_style

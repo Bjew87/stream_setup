@@ -201,7 +201,9 @@
             "push-to-talk": false,
             "push-to-talk-delay": 0,
             "settings": {
-                "color": 4291400535
+                "color": 4291400535,
+                "width": 2560,
+                "height": 1440
             },
             "sync": 0,
             "versioned_id": "color_source_v3",
@@ -226,7 +228,9 @@
             "push-to-talk": false,
             "push-to-talk-delay": 0,
             "settings": {
-                "color": 4291400535
+                "color": 4291400535,
+                "width": 400,
+                "height": 225
             },
             "sync": 0,
             "versioned_id": "color_source_v3",
@@ -251,7 +255,9 @@
             "push-to-talk": false,
             "push-to-talk-delay": 0,
             "settings": {
-                "color": 4294967295
+                "color": 4294967295,
+                "width": 2500,
+                "height": 1380
             },
             "sync": 0,
             "versioned_id": "color_source_v3",
@@ -1391,6 +1397,12 @@
             "push-to-talk": false,
             "push-to-talk-delay": 0,
             "settings": {
+                "font": {
+                    "face": "Arial",
+                    "flags": 0,
+                    "size": 64,
+                    "style": "Standard"
+                },
                 "text": "Heiliges Abendmahl"
             },
             "sync": 0,
