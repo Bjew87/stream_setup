@@ -22,6 +22,7 @@
 import openpyxl
 import os
 import json
+import platform
 import sys
 
 # set default variables
@@ -153,7 +154,10 @@ def create_json_data(scene_text, scene_text_header, base_path, scene_text_header
     color = None
     text_length = 0
     text_data = None
-    font_style = "Standard"
+    if platform.system == 'Windows':
+        font_style = "Standard"
+    else:
+        font_style = "Regular"
     font_flags = 0
     # get text length
     if scene_text is not None:
@@ -250,14 +254,17 @@ def create_scene_data(base_path, scene_title, scene_text_ID, scene_text_header_I
 def create_text_data(base_path, scene_text_ID, scene_text, font_size, font_flags, font_style, color):
     with open(base_path+os.sep+'json_templates'+os.sep+'text_template.json', encoding='utf8') as json_file:
         data = json.load(json_file)
+        # set name
         data['name'] = scene_text_ID
-        data['settings']['text'] = scene_text
+        if color:
+            data['settings']['color'] = color
+        # set font config
         data['settings']['font']['face'] = "Arial"
         data['settings']['font']['size'] = font_size
         data['settings']['font']['flags'] = font_flags
         data['settings']['font']['style'] = font_style
-        if color:
-            data['settings']['color'] = color
+        # set text
+        data['settings']['text'] = scene_text
         return data
 
 
