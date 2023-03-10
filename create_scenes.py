@@ -19,7 +19,6 @@
 """
 
 # import needed libraries
-from copy import Error
 import openpyxl
 import os
 import json
@@ -42,11 +41,11 @@ def read_xlsx(base_path, input_file, target_file):
         # get scene collection from json file
         scene_collection = json.load(json_file)
         # split target file path and read name into 'tail'
-        head, tail = os.path.split(target_file)
+        _, tail = os.path.split(target_file)
         # set name of scene collection based on target file
         scene_collection['name'] = tail.replace('.json', '')
     # read all rows from excel file
-    for idx, row in enumerate(ws.iter_rows()):
+    for idx, _ in enumerate(ws.iter_rows()):
         # iterate through all row in the excel except header row
         if idx > 0:
             # if there is data written
@@ -255,6 +254,10 @@ def create_scene_data_big_text(base_path, scene_title, scene_text_ID, scene_text
         data['name'] = scene_title
         data['settings']['items'][6]['name'] = scene_text_ID
         data['settings']['items'][7]['name'] = scene_text_header_ID
+        # adjust abendmahl scenes
+        if any(key.casefold() in str(scene_title).casefold() for key in ["abendmahl", "abendmal"]):
+            data['settings']['items'][2]['visible'] = False
+            data['settings']['items'][3]['visible'] = False
         return data
 
 
@@ -290,7 +293,7 @@ def create_text_data(base_path, scene_text_ID, scene_text, font_size, font_flags
 
 if __name__ == "__main__":
     #
-    print('Welcome to the automated scene creation by BJEW')
+    print('Welcome to the automated scene creation by Bjew')
     #
     try:
         if sys.argv and len(sys.argv) > 2:
@@ -298,7 +301,8 @@ if __name__ == "__main__":
             input_file = sys.argv[1]
             target_file = sys.argv[2]
             #
-            read_xlsx(os.path.dirname(sys.argv[0]), input_file, target_file)
+            base_path = os.path.dirname(os.path.abspath(sys.argv[0]))
+            read_xlsx(base_path, input_file, target_file)
             #
             print('Success!')
         else:
