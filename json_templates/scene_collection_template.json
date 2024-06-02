@@ -23,7 +23,7 @@
         "push-to-talk": false,
         "push-to-talk-delay": 0,
         "settings": {
-            "device_id": "{0.0.1.00000000}.{8b6f3748-30ea-4628-8045-e8e32ef954e2}"
+            "device_id": "{0.0.1.00000000}.{f6397c3e-be0d-45a8-b0bf-4fa3a5792a03}"
         },
         "sync": 200000000,
         "versioned_id": "wasapi_input_capture",
